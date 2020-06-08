@@ -3,7 +3,12 @@
 -   设计模式，及其案例
 -   算法- ---- 树
 
-
+### 通过聪url的输入发生了什么
+- 通讯
+- 浏览器架构、线程、主要是渲染
+- cnd缓存
+### 使用动态规划来写图片的瀑布流
+- [掘金](https://juejin.im/post/5ed5b9a26fb9a047a07f2c30?utm_source=gold_browser_extension#heading-3)
 ### 常用的工程化工具
 -   webpack rollup gulp 的区别 适用场景
 -   webpack的基本配置，核心原理
