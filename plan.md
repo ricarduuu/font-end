@@ -14,6 +14,7 @@
 -   webpack的基本配置，核心原理
 -   plugin生命周期，如何写
 -   如何写一个loader
+- yarn 和 npm
 
 
 ###  vue 框架/react框架
