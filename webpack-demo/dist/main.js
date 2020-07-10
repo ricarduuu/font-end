@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function create() {\n  let div = document.createElement('div');\n  div.innerHTML = 'stupid !'\n  return div;\n}\ndocument.body.append(create());\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("// import './index.css'\nfunction create() {\n  let div = document.createElement('div');\n  div.className = \"rect\";\n  div.innerHTML = 'stupid !'\n  return div;\n}\ndocument.body.append(create());\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
