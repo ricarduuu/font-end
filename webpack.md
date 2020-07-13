@@ -1,5 +1,6 @@
 
 ### webpack-----------基础配置
+- [webpack4模块运行机制](https://zhuanlan.zhihu.com/p/79706247)
 #### plugin
 - 看下什么样的css需要抽离，什么样的不需要------公共模块/私有模块/不变/多变
 - webpack-dev-server/devServer,用于启动一个本地的服务器, 热更新
@@ -38,7 +39,7 @@
 - hmr [url](https://www.webpackjs.com/plugins/hot-module-replacement-plugin/),
 - DllPlugin动态链接库/dll已经被废弃了，用于 保证一些大型的包在开发过程中不会被重复打包，使用 
 - 抽取公共代码------特别是针对多入口文件optimization.splitChunks
-- 
+- 如何通过webpack来改善浏览器缓存进行性能优化  知识点： manifest runtime 
 #### optimization.splitChunks 详解
 
 ### [手写tapble](https://juejin.im/post/5f0494e2e51d4534c4551c67?utm_source=gold_browser_extension#heading-27)

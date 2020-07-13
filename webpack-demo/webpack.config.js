@@ -33,5 +33,5 @@ module.exports = {
 
   }),
   ],
-  optimization: 
+  // optimization: 
 }
