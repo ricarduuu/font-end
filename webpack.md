@@ -3,6 +3,7 @@
 - [webpack4模块运行机制](https://zhuanlan.zhihu.com/p/79706247)
 - [要点](https://segmentfault.com/a/1190000021699105)
 -  [解析](https://juejin.im/post/5e1ca214518825265c24874b)
+- [系列](https://juejin.im/user/57c91b3b165abd0068db89c2/posts)
 #### plugin
 - 看下什么样的css需要抽离，什么样的不需要------公共模块/私有模块/不变/多变
 - webpack-dev-server/devServer,用于启动一个本地的服务器, 热更新
