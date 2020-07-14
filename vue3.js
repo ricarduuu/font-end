@@ -1,13 +1,15 @@
 function track() {
   // 收集依赖
-
+  
 }
 function trigger() {
   // 触发更新
 }
 
-function effect() {
+function effect(fn, option) {
   // 副作用
+  // computed是一个特殊的effect
+
 }
 const  baseHandler = {
   get(target, key) {
@@ -17,7 +19,10 @@ const  baseHandler = {
     return res;
   },
   set(target, key, val) {
-
+    const info = {
+      oldValue: target[key],
+      newValue: val
+    }
   }
 }
 // proxy reflect
