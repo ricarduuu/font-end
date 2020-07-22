@@ -5,5 +5,3 @@ export default class First {
         Third('First')
     }
 }
-const f = new First();
-f.say();

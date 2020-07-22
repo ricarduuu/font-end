@@ -19,8 +19,10 @@
 
 
 ### 模块
-- amd cmd es6
-
+- 对amd cmd es6 commonjs的理解
+- amd cmd ------- define /require, amd require前置，cmd（sea.js）require就近
+- commonjs CommonJS的核心思想就是通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或者 module.exports 来导出需要暴露的接口。输出的是一个值的拷贝， 是在运行时加载的
+- es6moudule 是在编译的时候输出，并且是值引用。
 #### 寄生组合式继承(还得翻下书)
 - 构造函数，只new一次， 同时构造函数可以传递参数
 - 原型链

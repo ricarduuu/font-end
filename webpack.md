@@ -4,6 +4,7 @@
 - [要点](https://segmentfault.com/a/1190000021699105)
 -  [解析](https://juejin.im/post/5e1ca214518825265c24874b)
 - [系列](https://juejin.im/user/57c91b3b165abd0068db89c2/posts)
+- [分析生成后的bundle文件](https://juejin.im/post/5d4a4644f265da03ab423767)
 #### plugin
 - 看下什么样的css需要抽离，什么样的不需要------公共模块/私有模块/不变/多变
 - webpack-dev-server/devServer,用于启动一个本地的服务器, 热更新
@@ -47,3 +48,8 @@
 
 ### [手写tapble](https://juejin.im/post/5f0494e2e51d4534c4551c67?utm_source=gold_browser_extension#heading-27)
 ### 手写简单webpack
+
+### 生成的文件
+####  bubdle/ 
+####  __weboack_require__ / 
+####  module的缓存

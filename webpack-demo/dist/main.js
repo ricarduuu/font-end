@@ -86,14 +86,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/first.js":
+/*!**********************!*\
+  !*** ./src/first.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return First; });\n/* harmony import */ var _third__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./third */ \"./src/third.js\");\n//first.js\n\nclass First {\n    say() {\n        Object(_third__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('First')\n    }\n}\n\n\n//# sourceURL=webpack:///./src/first.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// import './index.css'\nfunction create() {\n  let div = document.createElement('div');\n  div.className = \"rect\";\n  div.innerHTML = 'stupid !'\n  return div;\n}\ndocument.body.append(create());\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _first__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./first */ \"./src/first.js\");\n// import './index.css'\n\nconst f = new _first__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nf.say();\nfunction create() {\n  let div = document.createElement('div');\n  div.className = \"rect\";\n  div.innerHTML = 'stupid !'\n  return div;\n}\ndocument.body.append(create());\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/third.js":
+/*!**********************!*\
+  !*** ./src/third.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Third; });\nfunction Third(moduleName) {\n  console.log(moduleName);\n}\n\n//# sourceURL=webpack:///./src/third.js?");
 
 /***/ })
 
