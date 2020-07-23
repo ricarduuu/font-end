@@ -1,5 +1,6 @@
 const path = require('path');
 const  HtmlWebpackPlugin = require('html-webpack-plugin'); //通过 npm 安装
+const  { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   devServer: {
@@ -26,6 +27,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',//模板文件地址
       filename: 'index.html',//指定打包后的文件名字
@@ -33,5 +35,7 @@ module.exports = {
 
   }),
   ],
-  // optimization: 
+  optimization:{
+    runtimeChunk: true
+  },
 }
