@@ -1,9 +1,6 @@
 //second.js
-import Third from './third'
-export default class Second {
+export class Second {
     say() {
-        Third('Second')
+        console.log('Second')
     }
 }
-const s = new Second();
-s.say();

@@ -35,18 +35,34 @@
 - extensions: [] ,引入文件如果没有后缀，会按照数组中的顺序查找
 
 ### 优化 （性能优化配置其实是对功能的眼神，理解了原理才能知道 什么地方该怎么优化）
+#### 优化开发体验
+-  include/exclude，缩小目标的范围，加快文件的查找速度
+- 多线程打包happypack 据说可以多进程打包，提高速度但是还没用过
+- hmr [url](https://www.webpackjs.com/plugins/hot-module-replacement-plugin/),
+- treeShaking 可以筛选出来 es6模块中是否被使用的代码，第三方的话，需要引入的模块是es6的
+
+
+#### 优化输出质量
+- 区分环境，线上禁止日志/压缩代码（UglifyJsPlugin）缩短变量名字 去除无用的代码，混淆代码
+- 压缩es6代码，某些环境下对es6的代码支持性非常好，例如最新版的 Chrome、ReactNative 的引擎 JavaScriptCore，UglifyES
+- 压缩css  cssnano,需要开启 css-loader 的 minimize 选项。
 - 对于一些确定的文件，没有其他引入的 
 
     module: {
       noParse: /jquery|lodash/,
     }
--  include/exclude，缩小目标的范围，加快文件的查找速度
-- 多线程打包happypack 据说可以多进程打包，提高速度但是还没用过
 - 这里需要@babel/plugin-syntax-dynamic-import用于 解析识别import()动态导入语法
-- hmr [url](https://www.webpackjs.com/plugins/hot-module-replacement-plugin/),
 - DllPlugin动态链接库/dll已经被废弃了，用于 保证一些大型的包在开发过程中不会被重复打包，使用 
 - 抽取公共代码------特别是针对多入口文件optimization.splitChunks
 - 如何通过webpack来改善浏览器缓存进行性能优化  知识点： manifest runtime 
+##### cdn
+- 静态资源的导入 URL 需要变成指向 CDN 服务的绝对路径的 URL 而不是相对于 HTML 文件的 URL。
+- 静态资源的文件名称需要带上有文件内容算出来的 Hash 值，以防止被缓存。
+- 不同类型的资源放到不同域名的 CDN 服务上去，以防止资源的并行加载被阻塞。
+- output.publicPath 中设置 JavaScript 的地址。
+- css-loader.publicPath 中设置被 CSS 导入的资源的的地址。
+- WebPlugin.stylePublicPath 中设置 CSS 文件的地址。
+- 只有在生产环境中可以生效，加上--display-used-exports可以看到 有哪些函数被打包进去
 ####  比较容易想到的问题及其技术关联的地方
 #### 异步加载
 - （异步加载相关的api和要点）

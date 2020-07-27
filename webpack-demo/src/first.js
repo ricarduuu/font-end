@@ -1,7 +1,13 @@
 //first.js
 import Third from './third'
-export default class First {
+export class first {
     say() {
         Third('First')
+    }
+}
+
+export class Second {
+    say() {
+        console.log('Second')
     }
 }
