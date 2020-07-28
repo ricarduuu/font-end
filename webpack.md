@@ -64,6 +64,34 @@
 - WebPlugin.stylePublicPath 中设置 CSS 文件的地址。
 - 只有在生产环境中可以生效，加上--display-used-exports可以看到 有哪些函数被打包进去
 ####  比较容易想到的问题及其技术关联的地方
+#### webpack打包速度的问题，
+- 
+#### optimization.splitChunks 详解
+
+### [手写tapble](https://juejin.im/post/5f0494e2e51d4534c4551c67?utm_source=gold_browser_extension#heading-27)
+### 手写简单webpack
+
+### 生成的文件(需要从小到大分析，自己写一个demo慢慢添加内容，拆解生成后的文件，循序渐进到自己当前的项目，去分析)
+####  main.js
+-执行了window['webpackJsonp'].push方法
+- 传参 [['main'], {路径: function,  路径: function,.....}, [["./src/index.js","runtime~main"]]],对于参数的理解还未知
+- 对于参数的理解 data[0] ==> chunkIds  data[1] ==> moreModules data[2] ==> executeModules   /// chunkIds 和moreModules的区别
+####  __weboack_require__ 
+- __weboack_require__是对require 重新包裹了一层，主要用于加载js文件
+- __webpack_require__.r方法主要是标识该模块为es模块,
+
+
+      	        __webpack_require__.r = function(exports) {
+        /******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+        /******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+        /******/ 		}
+        /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+        /******/ 	};
+
+
+- __webpack_require__.d方法是提供Getter给导出的方法、变量
+- __webpack_require__.e 此方法是异步加载模块？？？？？
+####  module的缓存
 #### 异步加载
 - （异步加载相关的api和要点）
 - 原理
@@ -74,21 +102,8 @@
 - 2 执行入口 js 文件：modules[moduleId].call(module.exports, module, module.exports, webpack_require);
 - 3 由于上述代码分别__webpack_require__.e了0 和 1，分别使用类jsonp的方式异步加载对应 chunk，并缓存到 promise 的 resolve 中，并标记对应 chunk 已经加载*
 - 4 调用对应 chunk 模块时会在 window 上注册一个 webpackJsonp 数组，window['webpackJsonp'] = window['webpackJsonp'] || []。并且执行push操作。由于push操作是使用webpackJsonpCallback进行重写的，所以每当执行push的时候就会触发webpackJsonpCallback. webpackJsonpCallback 标记对应 chunk 已经加载并执行代码。
-#### webpack打包速度的问题，
-- 
-#### optimization.splitChunks 详解
+- webpackJsonpCallback
 
-### [手写tapble](https://juejin.im/post/5f0494e2e51d4534c4551c67?utm_source=gold_browser_extension#heading-27)
-### 手写简单webpack
-
-### 生成的文件
-####  bunddle/ 
-####  __weboack_require__ 
-- __weboack_require__是对require 重新包裹了一层，主要用于加载js文件
-- __webpack_require__.r方法主要是标识该模块为es模块
-- __webpack_require__.d方法是提供Getter给导出的方法、变量
-- __webpack_require__.e 此方法是异步加载模块？？？？？
-####  module的缓存
 
 
 
