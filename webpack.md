@@ -78,7 +78,14 @@
 - 对于参数的理解 data[0] ==> chunkIds  data[1] ==> moreModules data[2] ==> executeModules   /// chunkIds 和moreModules的区别
 ####  __weboack_require__ 
 - __weboack_require__是对require 重新包裹了一层，主要用于加载js文件
-- __webpack_require__.r方法主要是标识该模块为es模块,
+- __weboack_require__.m 
+- __webpack_require__.r方法主要是通过 Symbol.toStringTa的存在与否标识该模块为es模块,
+- __weboack_require__.c   module的缓存
+- __weboack_require__.d harmony exports,感觉就是 default exports，供Getter给导出的方法、变量
+- __weboack_require__.t没看懂
+- __weboack_require__.n
+- __weboack_require__.o 判断是不是自有属性
+- __webpack_require__.p public path应该是 配置中的资源位置
 
 
       	        __webpack_require__.r = function(exports) {
@@ -89,7 +96,6 @@
         /******/ 	};
 
 
-- __webpack_require__.d方法是提供Getter给导出的方法、变量
 - __webpack_require__.e 此方法是异步加载模块？？？？？
 ####  module的缓存
 #### 异步加载
@@ -103,6 +109,28 @@
 - 3 由于上述代码分别__webpack_require__.e了0 和 1，分别使用类jsonp的方式异步加载对应 chunk，并缓存到 promise 的 resolve 中，并标记对应 chunk 已经加载*
 - 4 调用对应 chunk 模块时会在 window 上注册一个 webpackJsonp 数组，window['webpackJsonp'] = window['webpackJsonp'] || []。并且执行push操作。由于push操作是使用webpackJsonpCallback进行重写的，所以每当执行push的时候就会触发webpackJsonpCallback. webpackJsonpCallback 标记对应 chunk 已经加载并执行代码。
 - webpackJsonpCallback
+
+- eval拆解
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */ 
+    __webpack_require__.d(__webpack_exports__, "first", function() { return first; });
+    /* harmony export (binding) */ 
+    __webpack_require__.d(__webpack_exports__, "Second", function() { return Second; });
+    /* harmony import */ 
+    var _third__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./third */ "./src/third.js");
+    //first.js
+    class First {
+      say() {
+        Object(_third__WEBPACK_IMPORTED_MODULE_0__["default"])('First')
+    }}
+    let first = new First()
+    class Second {
+      say() {        
+        console.log('Second')    
+      }}
+      //# sourceURL=webpack:///./src/first.js?");
+
+
 
 
 
