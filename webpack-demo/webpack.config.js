@@ -10,7 +10,7 @@ module.exports = {
     compress: false
   },
   entry: {
-    main: './src/index.js',
+    main: './src/index.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,7 +23,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, use: 'syncLoader'},
-      { test: /\.css$/, use: 'styleLoader'}
+      { test: /\.css$/, use: 'styleLoader'},
+      { test: /\.ts$/, use: 'ts-loader'},
     ]
   },
   plugins: [
