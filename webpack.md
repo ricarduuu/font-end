@@ -76,7 +76,7 @@
 -执行了window['webpackJsonp'].push方法
 - 传参 [['main'], {路径: function,  路径: function,.....}, [["./src/index.js","runtime~main"]]],对于参数的理解还未知
 - 对于参数的理解 data[0] ==> chunkIds  data[1] ==> moreModules data[2] ==> executeModules   /// chunkIds 和moreModules的区别
-####  __weboack_require__ 
+####  __weboack_require__ , 没怎么理解，等后面看看别的再回头看看
 - __weboack_require__是对require 重新包裹了一层，主要用于加载js文件
 - __weboack_require__.m 
 - __webpack_require__.r方法主要是通过 Symbol.toStringTa的存在与否标识该模块为es模块,
