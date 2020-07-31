@@ -3,7 +3,7 @@
 // })
 import {  first } from './first'
 first.say();
-function create() {
+function create(): Node {
   let div = document.createElement('div');
   div.className = "rect";
   div.innerHTML = 'stupid !'
