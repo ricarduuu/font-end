@@ -8,7 +8,7 @@
  
 - as
 #### 泛型
-- 大多数情况下，编译器可以推断出值的类型，在一些复杂的情况下，推断不出来是需要泛型的，T作为一个类型参数传递给函数
+- 大多数情况下，编译器可以推断出值的类型，在一些复杂的情况下，推断不出来是需要泛型的，T作为一个类型参数传递给函数,也可以使用不同于T的泛型参数名，泛型也是可以继承的 <T extends parentT>
 
     function loggingIdentity<T>(arg: T[]): T[] {
     console.log(arg.length);  // Array has a .length, so no more error
@@ -18,3 +18,6 @@
 
 - T[]是一种表示方法 还可以使用 Array<T>
 
+-   接口继承类，
+
+-   
