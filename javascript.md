@@ -39,3 +39,24 @@
 - for..in循环
 - Object.keys方法
 - JSON.stringify方法
+
+##### eventLoop 浏览器/node
+- timer 对应setTimeOut  setInterval
+- I/O callbacks,大多数的回调方法在这个阶段执行，除了timers、close和setImmediate事件的回调函数。fs.readFile的回调是放在poll阶段来执行的
+- idle，prepare：仅仅在内部使用，我们不管它。
+- poll：轮询，不断检查有没有新的I/O事件，事件环可能会在这里阻塞。1)如果有到期的定时器，那么就执行定时器的回调方法。2)处理poll阶段对应的事件队列（以下简称poll队列）里的事件。
+
+当事件循环到达poll阶段时，如果这时没有要处理的定时器的回调方法，则会进行下面的判断：1.如果poll队列不为空，则事件循环会按照顺序遍历执行队列中的回调函数，这个过程是同步的。2.如果poll队列为空，会接着进行如下的判断：①如果当前代码定义了setImmediate方法，事件循环会离开poll阶段，然后进入check阶段去执行setImmediate方法定义的回调方法。②如果当前代码并没有定义setImmediate方法，那么事件循环可能会进入等待状态，并等待新的事件出现，这也是该阶段为什么会被命名为poll（轮询）的原因。此外，还会不断检查是否有相关的定时器超时，如果有，就会跳转到timers阶段，然后执行对应的回调。
+- check 处理setImmediate事件的回调,setImmediate是一个特殊的定时器方法，它占据了事件循环的一个阶段，整个check阶段就是为setImmediate方法而设置的。一般情况下，当事件循环到达poll阶段后，就会检查当前代码是否调用了setImmediate，但如果一个回调函数是被setImmediate方法调用的，事件循环就会跳出poll阶段而进入check阶段。
+
+
+###### process.nextTick
+process.nextTick的回调函数是由事件循环调用的，
+无论node处于什么阶段都会，在阶段结束，清空 nextTick队列
+###### process.nextTick vs setImmediate ？？？？/
+- setImmediate的事件会在当前事件循环的结尾触发，对应的回调方法会在当前事件循环的末尾（check）执行。由于process.nextTick会在当前操作完成后立刻执行，因此总会在setImmediate之前执行
+- 当有递归的异步操作时只能使用setImmediate，不能使用process.nextTick，前面讲process.nextTick时已经验证过这个问题了，就是递归调用process.nextTck会出现call stack溢出的情况
+
+###### setImmediate setTimeout
+- 当代码中同时出现这两个方法，我们已经知道了setImmediate方法会在poll阶段结束后执行，而setTimeout会在规定的时间到期后执行，由于无法预测执行代码时事件循环当前处于哪个阶段，
+- 但是如果将二者放在一个IO操作的callback中，则永远是setImmediate先执行
