@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, use: 'syncLoader'},
-      { test: /\.css$/, use: 'styleLoader'},
+      { test: /\.css$/, use: [{loader: 'style-loader'},  {loader: 'css-loader'}, {loader: 'styleLoader'},]},
       { test: /\.ts$/, use: 'ts-loader'},
     ]
   },

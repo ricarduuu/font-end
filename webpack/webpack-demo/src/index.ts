@@ -1,6 +1,7 @@
 // import("./first").then(first => {
 //   f.say();
 // })
+import  './index.css';
 import {  first } from './first'
 first.say();
 function create(): Node {
