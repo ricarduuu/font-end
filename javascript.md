@@ -17,11 +17,12 @@
 * 延长局部变量的生命周期
 * 让函数外部能操作内部的局部变量
 
-
+### [继承](./继承.md)
 ### 模块
 - 对amd cmd es6 commonjs的理解
-- amd cmd ------- define /require, amd require前置，cmd（sea.js）require就近
-- commonjs CommonJS的核心思想就是通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或者 module.exports 来导出需要暴露的接口。输出的是一个值的拷贝， 是在运行时加载的
+- amd cmd ------- define /require, amd require前置，cmd（sea.js）require就近, amd是一种前置依赖，如果说你定义的函数中需要什么模块需要是现在 定义的数组中引入，在回调函数里面加载，
+CMD 是一种依赖就近，在什么地方使用就在什么地方引入，即用即反，是一种同步的概念
+- commonjs CommonJS的核心思想就是通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或者 module.export 来导出需要暴露的接口。输出的是一个值的拷贝， 是在运行时加载的
 - es6moudule 是在编译的时候输出，并且是值引用。
 #### 寄生组合式继承(还得翻下书)
 - 构造函数，只new一次， 同时构造函数可以传递参数
