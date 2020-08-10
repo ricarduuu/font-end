@@ -17,7 +17,7 @@
 - 3组合继承(1 + 2)
 - 4寄生式继承
 - es6 类
-
+### [作用域、继承、闭包、模块](./MD/proto-scope-module)
 ### 作用域
 #### [prototype __proto__ constructor](./proto)
 ### 闭包
