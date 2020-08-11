@@ -24,3 +24,67 @@
 ### 区别与联系
 - 原型链存在于作用域内，作用域用于查找是否存在某个变量，原型链用于查找是否存在对象的某个属性
 - 每个闭包都有自己的词法作用域
+- 在函数的创建执行过程中，作用域链会被保存在内部属性中
+
+### 执行上下文
+-   每个执行上下文中，都有三个元素，变量对象、作用域链、this
+#### 变量对象
+- 变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。
+- 在全局中，他就是全局对象
+- 函数在激活的时候，函数上下文的变量对象初始化只包括 Arguments 对象，在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值，在代码执行阶段，会再次修改变量对象的属性值
+
+
+### 课外知识   [reference](https://github.com/mqyqingfeng/Blog/issues/7) 好难懂啊哈哈哈哈
+- 在语言的基本类型之外还存在着一种规范类型，它们的作用是用来描述语言底层行为逻辑，并不会存在于实际的代码中，比如referencw，它与this 的指向有着密切的关联。
+- 深入的了解有助于理解下面的这段代码
+
+    var value = 1;
+
+    var foo = {
+      value: 2,
+      bar: function () {
+        return this.value;
+      }
+    }
+    console.log((false || foo.bar)()); // 1
+
+- Reference 的构成，由三个组成部分，分别是：base value，referenced name，strict reference
+- 我们简单的理解的话：base value 就是属性所在的对象或者就是 EnvironmentRecord，它的值只可能是 undefined, an Object, a Boolean, a String, a Number, or an environment record 其中的一种。referenced name 就是属性的名称。
+
+
+
+
+        var foo = 1
+        // 对应的referencej就是
+        Reference={
+          base: environmentRecord,
+          name: 'foo',
+          strict: false
+        }
+
+
+
+
+        var foo = {
+        bar: function () {
+          return this;
+            }
+        };
+        
+        foo.bar(); // foo
+
+        // bar对应的Reference是：
+        var BarReference = {
+            base: foo,
+            propertyName: 'bar',
+            strict: false
+        };
+
+
+- reference中的方法比如 GetBase 和 IsPropertyReference。GetBase用于返回reference中的base value,IsPropertyReference: 如果 base value 是一个对象，就返回true。
+- 还有 GetValue 返回对象属性真正的值，但是要注意：调用 GetValue，返回的将是具体的值，而不再是一个 Reference，这个很重要，这个很重要，这个很重要。
+#### 根据使用场景来解释this （但是还是不能完全解释清楚this的变化的）
+- 1、作为对象调用时，指向该对象 obj.b(); // 指向obj
+- 2、作为函数调用, var b = obj.b; b(); // 指向全局window
+- 3、作为构造函数调用 var b = new Fun(); // this指向当前实例对象
+- 4、作为call与apply调用 obj.b.apply(object, []); // this指向当前的object
