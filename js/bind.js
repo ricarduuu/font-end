@@ -20,6 +20,7 @@ Function.prototype.bind1 =  Function.prototype.bind ||  function(context) {
   var fBound = function () {
       var bindArgs = Array.prototype.slice.call(arguments);
       console.log(this instanceof fBound , '0-----')
+      // this instanceof fBound一直不理解，
       return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
   }
   // 为什么要指定prototype
