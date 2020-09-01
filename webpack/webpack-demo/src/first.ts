@@ -5,8 +5,11 @@ class First {
         Third('First')
     }
 }
+interface firstInter{
+    say: object
+}
 export let first = new First()
-export class Second {
+export class Second{
     say() {
         console.log('Second')
     }
