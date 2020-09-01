@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.addEventListener('load', function () {
+      console.log(window.performance.timing)
+    })
+    let sum = 0;
+    console.log('---for -start', new Date().getTime())
+    for(let i =1 ; i < 100000000; i++){
+      sum = sum +i;
+    }
+    console.log('---for -end', new Date().getTime())
+  </script>
+</head>
+<body>
+  <div id="txt" >
+    wev kl;/erg jkml,;./
+    <ul>
+      <li>234t</li>
+      <li>234t</li>
+      <li>234t</li>
+      <li>234t</li>
+      <li>234t</li>
+      <li>234t</li>
+    </ul>
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+  </div>
+  <script>
+    console.log('---end', new Date().getTime())
+  </script>
+</body>
+</html>
